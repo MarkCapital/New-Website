@@ -4,158 +4,141 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jonathan's Pizza Shop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', sans-serif;
     }
     body {
-      font-family: 'Roboto', sans-serif;
+      background: #f3f3f3;
       scroll-behavior: smooth;
-      background-color: #f4f4f4;
-      color: #2c2c2c;
     }
     header {
-      background-image: url('https://via.placeholder.com/1600x600');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
+      background: url('https://source.unsplash.com/1600x900/?pizza') center/cover fixed no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 100px 20px;
-      color: white;
+      color: #fff;
       position: relative;
     }
     header::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
+      top: 0; left: 0; right: 0; bottom: 0;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.1);
       z-index: 1;
     }
-    header h1 {
+    header .content {
       position: relative;
       z-index: 2;
-      font-size: 3rem;
-    }
-    header p {
-      position: relative;
-      z-index: 2;
-      font-size: 1.2rem;
-      margin-top: 10px;
     }
     nav {
-      background-color: #ddd0c8;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
-      padding: 10px;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     nav a {
-      margin: 0 15px;
       text-decoration: none;
-      color: #2c2c2c;
-      font-weight: bold;
+      color: #444;
+      margin: 0 1rem;
+      font-weight: 600;
     }
     section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .about, .gallery, .contact {
-      background: white;
-      margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      border-radius: 12px;
-      padding: 40px 20px;
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
     .gallery img {
       width: 100%;
       max-width: 300px;
-      margin: 15px;
-      border-radius: 10px;
-      transition: transform 0.3s;
+      margin: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    form {
+    .gallery {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    form input, form textarea {
-      width: 80%;
-      max-width: 400px;
-      margin: 10px 0;
-      padding: 10px;
+    form input, form textarea, form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
     form button {
-      padding: 10px 20px;
-      background-color: #a7988a;
-      color: white;
+      background: #444;
+      color: #fff;
       border: none;
-      border-radius: 8px;
+      font-weight: bold;
       cursor: pointer;
-    }
-    form button:hover {
-      background-color: #8a7763;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #eeeae4;
+      padding: 2rem;
+      background: #e0e0e0;
     }
-    .animate {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .animate.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .logo {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Jonathan's Pizza Shop</h1>
-    <p>Delicious, handmade pizza crafted with love and the freshest ingredients.</p>
-  </header>
-
   <nav>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+    <div class="logo"><i class="fas fa-pizza-slice"></i> Jonathan's Pizza Shop</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <section id="about" class="about animate">
-    <h2>About Us</h2>
-    <p>Welcome to Jonathan's Pizza Shop — your go-to place for mouthwatering, cheesy, and crispy pizza made fresh every day. Whether you're a fan of the classics or like to explore unique flavors, we've got something delicious for everyone. Stop by and taste the difference!</p>
-  </section>
-
-  <section id="gallery" class="gallery animate">
-    <h2>Gallery</h2>
-    <div>
-      <img src="https://via.placeholder.com/300x200" alt="Pizza 1">
-      <img src="https://via.placeholder.com/300x200" alt="Pizza 2">
-      <img src="https://via.placeholder.com/300x200" alt="Pizza 3">
+  <header>
+    <div class="content" data-aos="fade-up">
+      <h1>Welcome to Jonathan's Pizza Shop</h1>
+      <p>Delicious, handcrafted pizza made with love and the freshest ingredients.</p>
     </div>
+  </header>
+
+  <section id="about" data-aos="fade-right">
+    <h2>About Us</h2>
+    <p>At Jonathan's Pizza Shop, we take pride in serving piping-hot, delicious pizza with fresh ingredients and mouthwatering flavors. Whether you're craving a classic cheese slice or a loaded specialty pie, we’ve got something for every pizza lover. Come in and taste the love!</p>
   </section>
 
-  <section id="contact" class="contact animate">
+  <section id="gallery" class="gallery" data-aos="fade-left">
+    <img src="https://source.unsplash.com/400x300/?pizza" alt="Pizza 1">
+    <img src="https://source.unsplash.com/400x301/?pepperoni-pizza" alt="Pizza 2">
+    <img src="https://source.unsplash.com/400x302/?pizza-slice" alt="Pizza 3">
+    <img src="https://source.unsplash.com/400x303/?italian-pizza" alt="Pizza 4">
+  </section>
+
+  <section id="contact" data-aos="fade-up">
     <h2>Contact Us</h2>
     <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Send us a message about your pizza cravings!"></textarea>
-      <button type="submit">Send</button>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Let us know how we can help you!" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </section>
 
@@ -163,20 +146,9 @@
     <p>&copy; 2025 Jonathan's Pizza Shop. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    document.querySelectorAll('.animate').forEach(el => {
-      observer.observe(el);
-    });
+    AOS.init({ duration: 1000 });
   </script>
 </body>
 </html>
